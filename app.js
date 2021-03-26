@@ -74,32 +74,6 @@ botui.message.add({
         content:'Alright. I will process your request. Please give me a moment.'
     });
 }).then(function(){
-    return botui.message.add({
-        delay:700,
-        loading: true,
-        content:'Our record shows that your item is already delivered.'
-    });
-}).then(function(){
-    return botui.message.add({
-        delay:700,
-        loading: true,
-        content:'Are you sure that you do not have the item with you?'
-    });
-}).then(function(){
-    return botui.action.button({
-        action: [
-          { text: 'No, I do not have the item',
-            value: 'No, I do not have the item' 
-          },
-          { text: 'Yes, I do have the item',
-            value: 'Yes, I do have the item' 
-          }
-        ]
-    });
-}).then(function (res) { 
-        console.log(res.value);
-        response.push(res.value);
-}).then(function(){
     sendcomplete();
     return botui.message.add({
         delay:900,
