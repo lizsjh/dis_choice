@@ -17,8 +17,8 @@ botui.message.add({
           { text: 'Missing item',
             value: 'Missing item' 
           },
-          { text: 'Check an order status',
-            value: 'Check an order status' 
+          { text: 'Price overcharge',
+            value: 'Price overcharge' 
           },
           { text: 'Delivery delay',
             value: 'Delivery delay'
