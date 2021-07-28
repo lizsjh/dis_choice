@@ -12,16 +12,32 @@ botui.message.add({
         content:'I am handling your request today. What brings you here?'
     });
 }).then(function(){
+    return botui.action.text({
+        action: {
+          placeholder: 'Enter your message.'
+        }
+    
+    });
+}).then(function (res) { 
+    console.log(res.value);
+    response.push(res.value);
+}).then(function(){
+    return botui.message.add({
+        delay:700,
+        loading: true,
+        content:'I do not understand what you said. Can you choose one of the options below?'
+    });
+}).then(function(){
     return botui.action.button({
         action: [
           { text: 'Missing item',
             value: 'Missing item' 
           },
-          { text: 'Price overcharge',
-            value: 'Price overcharge' 
+          { text: 'Check order status',
+            value: 'Check order status' 
           },
-          { text: 'Delivery delay',
-            value: 'Delivery delay'
+          { text: 'Return/exchange item(s)',
+            value: 'Return/exchange item(s)'
           }
         ]
     });
