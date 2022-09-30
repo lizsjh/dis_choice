@@ -2,30 +2,14 @@ var botui=new BotUI('app');
 const response=new Array();
 
 botui.message.add({
-    delay:500,
+    delay:700,
     loading: true,
     content: 'Hello. This is Taylor, and I am a bot created by the customer service department.'
 }).then(function(){
     return botui.message.add({
-        delay:700,
+        delay:500,
         loading: true,
         content:'I am handling your request today. What brings you here?'
-    });
-}).then(function(){
-    return botui.action.text({
-        action: {
-          placeholder: 'Enter your message.'
-        }
-    
-    });
-}).then(function (res) { 
-    console.log(res.value);
-    response.push(res.value);
-}).then(function(){
-    return botui.message.add({
-        delay:700,
-        loading: true,
-        content:'I do not understand what you said. Can you choose one of the options below?'
     });
 }).then(function(){
     return botui.action.button({
@@ -42,35 +26,36 @@ botui.message.add({
         ]
     });
 }).then(function (res) { 
-        console.log(res.value);
-        response.push(res.value);
+        console.log(res.value); 
+        response.push(res.value);   
 }).then(function(){
     return botui.message.add({
-        delay:700,
+        delay:800,
         loading: true,
-        content:'I can help you with that. First, could you tell me your order number?'
+        content:'I can help you with that. First, could you tell me why you need to replace or return this textbook?'
     });
 }).then(function(){
-    return botui.action.text({
-        action: {
-          placeholder: 'Enter your message.'
-        }
-    
+    return botui.action.button({
+        action: [
+          { text: 'Damage in the item',
+            value: 'Damage in the item' 
+          },
+          { text: 'Need a different version or edition',
+            value: 'Need a different version or edition' 
+          },
+          { text: 'Incorrect item delivered',
+            value: 'Incorrect item delivered'
+          }
+        ]
     });
 }).then(function (res) { 
-    console.log(res.value);
-    response.push(res.value);
+        console.log(res.value); 
+        response.push(res.value);   
 }).then(function(){
     return botui.message.add({
         delay:700,
         loading: true,
-        content:'Got it. Please allow me few seconds for pulling up your order.'
-    });
-}).then(function(){
-    return botui.message.add({
-        delay:1200,
-        loading: true,
-        content:'Which item(s) is missing?'
+        content:'Got it. Could you input your order number below?'
     });
 }).then(function(){
     return botui.action.text({
@@ -80,119 +65,73 @@ botui.message.add({
         });
 }).then(function (res) { 
     console.log(res.value);
-    response.push(res.value);
-}).then(function(){
-    return botui.message.add({
-        delay:900,
-        loading: true,
-        content:'I do not quite get what you are saying. Please choose an option below.'
-    });
-}).then(function(){
-    return botui.action.button({
-        action: [
-          { text: 'Sweater',
-            value: 'Sweater' 
-          },
-          { text: 'Jeans',
-            value: 'Jeans' 
-          },
-          { text: 'Baseball cap',
-            value: 'Baseball cap'
-          }
-        ]
-    });
-}).then(function (res) { 
-        console.log(res.value);
-        response.push(res.value);
+    response.push(res.value);    
 }).then(function(){
     return botui.message.add({
         delay:800,
         loading: true,
-        content:'Can you describe conditions of the rest of the items?'
+        content:'Alright. I will process your request. Please give me a moment.'
     });
-}).then(function(){
-    return botui.action.text({
-        action: {
-          placeholder: 'Enter your message.'
-        }
-    
-    });
-}).then(function (res) { 
-    console.log(res.value);
-    response.push(res.value);
 }).then(function(){
     return botui.message.add({
-        delay:800,
+        delay:1500,
         loading: true,
-        content:'I cannot process your message. Please select one.'
+        content:'The 3rd edition is currently in stock. For your information, you need to pay $50 more for the newer edition.'
     });
-}).then(function(){
-    return botui.action.button({
-        action: [
-          { text: 'In a good condition',
-            value: 'In a good condition' 
-          },
-          { text: 'Not in a good condition',
-            value: 'Not in a good condition' 
-          }
-        ]
-    });
-}).then(function (res) { 
-        console.log(res.value);
-        response.push(res.value);
 }).then(function(){
     return botui.message.add({
         delay:900,
         loading: true,
-        content:'Thank you for telling me. Meanwhile, I’ve identified the problem: there was a miscommunication in the packaging process.'
-    });
-}).then(function(){
-    return botui.message.add({
-        delay:1200,
-        loading: true,
-        content:'I can create a new order that will be delivered within a day, or I can refund for the missing item. What would you prefer?'
-    });
-}).then(function(){
-    return botui.action.text({
-        action: {
-          placeholder: 'Enter your message.'
-        }
-    
-    });
-}).then(function (res) { 
-    console.log(res.value);
-    response.push(res.value);
-}).then(function(){
-    return botui.message.add({
-        delay:700,
-        loading: true,
-        content:'I cannot understand. Can you repeat?'
+        content:'Would you still like to exchange the book?'
     });
 }).then(function(){
     return botui.action.button({
         action: [
-          { text: 'Create a new order',
-            value: 'Create a new order' 
+          { text: 'Yes, I would like an exchange',
+            value: 'Yes, I would like an exchange' 
           },
-          { text: 'Refund',
-            value: 'Refund' 
+          { text: 'No, I would like a refund',
+            value: 'No, I would like a refund' 
           }
         ]
     });
 }).then(function (res) { 
-        console.log(res.value);
-        response.push(res.value);
+        console.log(res.value); 
+        response.push(res.value);   
 }).then(function(){
     return botui.message.add({
-        delay:700,
+        delay:800,
         loading: true,
-        content:'Alright. I will process your request. Please hold on for a moment.'
+        content:'I’m processing your request. Please give me a moment'
     });
 }).then(function(){
     return botui.message.add({
         delay:1800,
         loading: true,
-        content:'I have processed your request. The issue is resolved'
+        content:'I have finished processing your request. Please make sure you return the older edition to us. Is there anything else you need?'
+    });
+}).then(function(){
+    return botui.action.button({
+        action: [
+          { text: '$20 express shipping label for returning the older edition',
+            value: '$20 express shipping label for returning the older edition' 
+          },
+          { text: 'Subscribe to a marketing newsletter',
+            value: 'Subscribe to a marketing newsletter' 
+          },
+          { text: 'No, I am done',
+            value: 'No, I am done' 
+          }
+        ]
+    });
+}).then(function (res) { 
+        console.log(res.value); 
+        response.push(res.value);   
+}).then(function(){
+    return botui.message.add({
+        delay:1800,
+        loading: true,
+        content:'I have processed your request, and the issue is resolved'
     });
 }).then(function(){
     sendcomplete();
@@ -204,5 +143,5 @@ botui.message.add({
 });
 
 function sendcomplete(){
-    window.parent.postMessage({"message": "completed","text":response}, "*");
+    window.parent.postMessage({"message": "completed","text1":response[0],"text2":response[1],"text3":response[2],"text4":response[3],"text5":response[4]}, "*");
 };
